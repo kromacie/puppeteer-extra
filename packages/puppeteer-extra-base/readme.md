@@ -7,28 +7,28 @@
 ## Installation
 
 ```bash
-yarn add puppeteer puppeteer-extra
+yarn add puppeteer puppeteer-extra-base
 # - or -
-npm install puppeteer puppeteer-extra
+npm install puppeteer puppeteer-extra-base
 
-# puppeteer-extra works with any puppeteer version:
-yarn add puppeteer@2.0.0 puppeteer-extra
+# puppeteer-extra-base works with any puppeteer version:
+yarn add puppeteer@2.0.0 puppeteer-extra-base
 ```
 
 ## Quickstart
 
 ```js
-// puppeteer-extra is a drop-in replacement for puppeteer,
+// puppeteer-extra-base is a drop-in replacement for puppeteer,
 // it augments the installed puppeteer with plugin functionality.
 // Any number of plugins can be added through `puppeteer.use()`
-const puppeteer = require('puppeteer-extra')
+const puppeteer = require('puppeteer-extra-base')
 
 // Add stealth plugin and use defaults (all tricks to hide puppeteer usage)
-const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+const StealthPlugin = require('puppeteer-extra-base-plugin-stealth')
 puppeteer.use(StealthPlugin())
 
 // Add adblocker plugin to block all ads and trackers (saves bandwidth)
-const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
+const AdblockerPlugin = require('puppeteer-extra-base-plugin-adblocker')
 puppeteer.use(AdblockerPlugin({ blockTrackers: true }))
 
 // That's it, the rest is puppeteer usage as normal 😊
@@ -54,15 +54,15 @@ puppeteer.launch({ headless: true }).then(async browser => {
 The above example uses the [`stealth`](/packages/puppeteer-extra-plugin-stealth) and [`adblocker`](/packages/puppeteer-extra-plugin-adblocker) plugin, which need to be installed as well:
 
 ```bash
-yarn add puppeteer-extra-plugin-stealth puppeteer-extra-plugin-adblocker
+yarn add puppeteer-extra-base-plugin-stealth puppeteer-extra-base-plugin-adblocker
 # - or -
-npm install puppeteer-extra-plugin-stealth puppeteer-extra-plugin-adblocker
+npm install puppeteer-extra-base-plugin-stealth puppeteer-extra-base-plugin-adblocker
 ```
 
 If you'd like to see debug output just run your script like so:
 
 ```bash
-DEBUG=puppeteer-extra,puppeteer-extra-plugin:* node myscript.js
+DEBUG=puppeteer-extra-base,puppeteer-extra-base-plugin:* node myscript.js
 ```
 
 ### More examples
@@ -74,10 +74,10 @@ DEBUG=puppeteer-extra,puppeteer-extra-plugin:* node myscript.js
 > so you get perfect type support out of the box. :)
 
 ```ts
-import puppeteer from 'puppeteer-extra'
+import puppeteer from 'puppeteer-extra-base'
 
-import AdblockerPlugin from 'puppeteer-extra-plugin-adblocker'
-import StealthPlugin from 'puppeteer-extra-plugin-stealth'
+import AdblockerPlugin from 'puppeteer-extra-base-plugin-adblocker'
+import StealthPlugin from 'puppeteer-extra-base-plugin-stealth'
 
 puppeteer.use(AdblockerPlugin()).use(StealthPlugin())
 
@@ -111,8 +111,8 @@ puppeteer
 ```js
 const vanillaPuppeteer = require('puppeteer')
 
-const { addExtra } = require('puppeteer-extra')
-const AnonymizeUA = require('puppeteer-extra-plugin-anonymize-ua')
+const { addExtra } = require('puppeteer-extra-base')
+const AnonymizeUA = require('puppeteer-extra-base-plugin-anonymize-ua')
 
 async function main() {
   const pptr1 = addExtra(vanillaPuppeteer)
@@ -158,18 +158,18 @@ async function checkUserAgent(pptr) {
 const { Cluster } = require('puppeteer-cluster')
 const vanillaPuppeteer = require('puppeteer')
 
-const { addExtra } = require('puppeteer-extra')
-const Stealth = require('puppeteer-extra-plugin-stealth')
-const Recaptcha = require('puppeteer-extra-plugin-recaptcha')
+const { addExtra } = require('puppeteer-extra-base')
+const Stealth = require('puppeteer-extra-base-plugin-stealth')
+const Recaptcha = require('puppeteer-extra-base-plugin-recaptcha')
 
 async function main() {
-  // Create a custom puppeteer-extra instance using `addExtra`,
+  // Create a custom puppeteer-extra-base instance using `addExtra`,
   // so we could create additional ones with different plugin config.
   const puppeteer = addExtra(vanillaPuppeteer)
   puppeteer.use(Stealth())
   puppeteer.use(Recaptcha())
 
-  // Launch cluster with puppeteer-extra
+  // Launch cluster with puppeteer-extra-base
   const cluster = await Cluster.launch({
     puppeteer,
     maxConcurrency: 2,
@@ -207,9 +207,9 @@ For using with TypeScript, just change your imports to:
 import { Cluster } from 'puppeteer-cluster'
 import vanillaPuppeteer from 'puppeteer'
 
-import { addExtra } from 'puppeteer-extra'
-import Stealth from 'puppeteer-extra-plugin-stealth'
-import Recaptcha from 'puppeteer-extra-plugin-recaptcha'
+import { addExtra } from 'puppeteer-extra-base'
+import Stealth from 'puppeteer-extra-base-plugin-stealth'
+import Recaptcha from 'puppeteer-extra-base-plugin-recaptcha'
 ```
 
 </details>
@@ -222,7 +222,7 @@ import Recaptcha from 'puppeteer-extra-plugin-recaptcha'
 
 ```js
 const chromium = require('chrome-aws-lambda')
-const { addExtra } = require('puppeteer-extra')
+const { addExtra } = require('puppeteer-extra-base')
 const puppeteerExtra = addExtra(chromium.puppeteer)
 
 const launch = async () => {
@@ -252,8 +252,8 @@ launch() // Launch Browser
 > [Kikobeats/browserless](https://github.com/Kikobeats/browserless) is a puppeteer-like Node.js library for interacting with Headless production scenarios.
 
 ```js
-const puppeteer = require('puppeteer-extra')
-const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+const puppeteer = require('puppeteer-extra-base')
+const StealthPlugin = require('puppeteer-extra-base-plugin-stealth')
 puppeteer.use(StealthPlugin())
 
 const browserless = require('browserless')({ puppeteer })
@@ -314,7 +314,7 @@ browserless
 - Anonymizes the user-agent on all pages.
 - Supports dynamic replacing, so the browser version stays intact and recent.
 
-#### [`puppeteer-extra-plugin-user-preferences`](/packages/puppeteer-extra-plugin-user-preferences)
+#### [`puppeteer-extra-plugin-user-preferences`](/packages/puppeteer-extra/packages/puppeteer-extra-plugin-user-preferences)
 
 - Allows setting custom Chrome/Chromium user preferences.
 - Has itself a plugin interface which is used by e.g. [`puppeteer-extra-plugin-font-size`](/packages/puppeteer-extra-plugin-font-size).
@@ -371,7 +371,7 @@ We use a [monorepo](/) powered by [Lerna](https://github.com/lerna/lerna#--use-w
 `puppeteer-extra` and all plugins are [tested continously](https://github.com/berstend/puppeteer-extra/actions) in a matrix of current (stable & LTS) NodeJS and puppeteer versions.
 We never broke compatibility and still support puppeteer down to very early versions from 2018.
 
-A few plugins won't work in headless mode (it's noted if that's the case) due to Chrome limitations (e.g. the [`user-preferences`](/packages/puppeteer-extra-plugin-user-preferences) plugin), look into `xvfb-run` if you still require a headless experience in these circumstances.
+A few plugins won't work in headless mode (it's noted if that's the case) due to Chrome limitations (e.g. the [`user-preferences`](/packages/puppeteer-extra/packages/puppeteer-extra-plugin-user-preferences) plugin), look into `xvfb-run` if you still require a headless experience in these circumstances.
 
 </details>
 
@@ -423,10 +423,10 @@ to extend puppeteer with additional functionality.
 Example:
 
 ```javascript
-const puppeteer = require('puppeteer-extra')
-puppeteer.use(require('puppeteer-extra-plugin-anonymize-ua')())
+const puppeteer = require('puppeteer-extra-base')
+puppeteer.use(require('puppeteer-extra-base-plugin-anonymize-ua')())
 puppeteer.use(
-  require('puppeteer-extra-plugin-font-size')({ defaultFontSize: 18 })
+  require('puppeteer-extra-base-plugin-font-size')({ defaultFontSize: 18 })
 )
 ;(async () => {
   const browser = await puppeteer.launch({ headless: false })
@@ -561,10 +561,10 @@ Example:
 
 ```javascript
 // javascript import
-const puppeteer = require('puppeteer-extra')
+const puppeteer = require('puppeteer-extra-base')
 
 // typescript/es6 module import
-import puppeteer from 'puppeteer-extra'
+import puppeteer from 'puppeteer-extra-base'
 
 // Add plugins
 puppeteer.use(...)
@@ -587,11 +587,11 @@ Example:
 ```javascript
 // js import
 const puppeteerVanilla = require('puppeteer')
-const { addExtra } = require('puppeteer-extra')
+const { addExtra } = require('puppeteer-extra-base')
 
 // ts/es6 import
 import puppeteerVanilla from 'puppeteer'
-import { addExtra } from 'puppeteer-extra'
+import { addExtra } from 'puppeteer-extra-base'
 
 // Patch provided puppeteer and add plugins
 const puppeteer = addExtra(puppeteerVanilla)

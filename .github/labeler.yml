@@ -8,15 +8,15 @@
 'package: core':
   - packages/automation-extra/**/*
   - packages/playright-extra/**/*
-  - packages/puppeteer-extra/**/*
+  - packages/puppeteer-extra-base/**/*
   - packages/automation-extra-plugin/**/*
-  - packages/puppeteer-extra-plugin/**/*
+  - packages/puppeteer-extra-base-plugin/**/*
 
 'plugin: automation-extra':
   - packages/plugin-*/**/*
 
 'plugin: puppeteer-extra':
-  - packages/puppeteer-extra-plugin-*/**/*
+  - packages/puppeteer-extra-base-plugin-*/**/*
 
 'plugin: recaptcha 🏴':
   - packages/*recaptcha*/**/*

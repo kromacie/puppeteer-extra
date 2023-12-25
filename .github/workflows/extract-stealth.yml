@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'packages/puppeteer-extra-plugin-stealth/**'
+      - 'packages/puppeteer-extra-base-plugin-stealth/**'
       - 'packages/extract-stealth-evasions/**'
       - '.github/workflows/extract-stealth.yml'
 

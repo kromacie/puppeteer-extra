@@ -1,6 +1,6 @@
 const assert = require('assert')
 const vanillaPuppeteer = require('puppeteer')
-const { addExtra } = require('puppeteer-extra')
+const { addExtra } = require('puppeteer-extra-base')
 
 const fpCollectPath = require.resolve('fpcollect/dist/fpCollect.min.js')
 

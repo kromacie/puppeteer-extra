@@ -1,6 +1,6 @@
 {
-  "name": "puppeteer-extra",
-  "version": "3.3.6",
+  "name": "puppeteer-extra-base",
+  "version": "1.0.0-evil",
   "description": "Teach puppeteer new tricks through plugins.",
   "repository": "berstend/puppeteer-extra",
   "author": "berstend",
@@ -43,13 +43,11 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
-    "@types/puppeteer": "*",
     "ava": "^2.4.0",
     "documentation-markdown-themes": "^12.1.5",
     "npm-run-all": "^4.1.5",
-    "puppeteer": "^21.6.1",
-    "puppeteer-extra-plugin": "^3.2.3",
-    "puppeteer-extra-plugin-anonymize-ua": "^2.4.6",
+    "puppeteer": "1.0.0-evil",
+    "puppeteer-extra-plugin": "1.0.0-evil",
     "rimraf": "^5.0.5",
     "rollup": "^4.9.1",
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -71,17 +69,6 @@
     "@types/puppeteer": "*",
     "puppeteer": "*",
     "puppeteer-core": "*"
-  },
-  "peerDependenciesMeta": {
-    "puppeteer": {
-      "optional": true
-    },
-    "puppeteer-core": {
-      "optional": true
-    },
-    "@types/puppeteer": {
-      "optional": true
-    }
   },
   "gitHead": "babb041828cab50c525e0b9aab02d58f73416ef3"
 }

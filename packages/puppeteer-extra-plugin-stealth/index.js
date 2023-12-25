@@ -1,6 +1,6 @@
 'use strict'
 
-const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
 
 /**
  * Stealth mode: Applies various techniques to make detection of headless puppeteer harder. 💯
@@ -16,16 +16,16 @@ const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
  * is kept as flexibile as possible, to support quick testing and iterations.
  *
  * ### Modularity
- * This plugin uses `puppeteer-extra`'s dependency system to only require
+ * This plugin uses `puppeteer-extra-base`'s dependency system to only require
  * code mods for evasions that have been enabled, to keep things modular and efficient.
  *
  * The `stealth` plugin is a convenience wrapper that requires multiple [evasion techniques](./evasions/)
  * automatically and comes with defaults. You could also bypass the main module and require
- * specific evasion plugins yourself, if you whish to do so (as they're standalone `puppeteer-extra` plugins):
+ * specific evasion plugins yourself, if you whish to do so (as they're standalone `puppeteer-extra-base` plugins):
  *
  * ```es6
  * // bypass main module and require a specific stealth plugin directly:
- * puppeteer.use(require('puppeteer-extra-plugin-stealth/evasions/console.debug')())
+ * puppeteer.use(require('puppeteer-extra-base-plugin-stealth/evasions/console.debug')())
  * ```
  *
  * ### Contributing
@@ -42,9 +42,9 @@ const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
  * - dynamic whitelist based on function evaluation
  *
  * @example
- * const puppeteer = require('puppeteer-extra')
+ * const puppeteer = require('puppeteer-extra-base')
  * // Enable stealth plugin with all evasions
- * puppeteer.use(require('puppeteer-extra-plugin-stealth')())
+ * puppeteer.use(require('puppeteer-extra-base-plugin-stealth')())
  *
  *
  * ;(async () => {
@@ -123,7 +123,7 @@ class StealthPlugin extends PuppeteerExtraPlugin {
    * @type {Set<string>} - A Set of all available evasions.
    *
    * @example
-   * const pluginStealth = require('puppeteer-extra-plugin-stealth')()
+   * const pluginStealth = require('puppeteer-extra-base-plugin-stealth')()
    * console.log(pluginStealth.availableEvasions) // => Set { 'user-agent', 'console.debug' }
    * puppeteer.use(pluginStealth)
    */
@@ -140,7 +140,7 @@ class StealthPlugin extends PuppeteerExtraPlugin {
    *
    * @example
    * // Remove specific evasion from enabled ones dynamically
-   * const pluginStealth = require('puppeteer-extra-plugin-stealth')()
+   * const pluginStealth = require('puppeteer-extra-base-plugin-stealth')()
    * pluginStealth.enabledEvasions.delete('console.debug')
    * puppeteer.use(pluginStealth)
    */

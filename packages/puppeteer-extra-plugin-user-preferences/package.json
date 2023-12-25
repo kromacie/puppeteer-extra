@@ -1,14 +1,14 @@
 {
-  "name": "puppeteer-extra-plugin-click-and-wait",
+  "name": "puppeteer-extra-plugin-user-preferences",
   "version": "1.0.0-evil",
-  "description": "Convenience function to wait for navigation to complete after clicking on an element.",
+  "description": "Launch puppeteer with arbitrary user preferences.",
   "main": "index.js",
   "repository": "berstend/puppeteer-extra",
   "author": "berstend",
   "license": "MIT",
   "scripts": {
     "docs": "node -e 0",
-    "lint": "eslint --ext .js .",
+    "lint": "eslint --ext .js ",
     "test": "run-p lint",
     "test-ci": "run-s test"
   },
@@ -19,7 +19,8 @@
     "puppeteer",
     "puppeteer-extra",
     "puppeteer-extra-plugin",
-    "clickAndWaitForNavigation",
+    "user-prefs",
+    "user-preferences",
     "chrome",
     "headless",
     "pupeteer"
@@ -27,11 +28,13 @@
   "devDependencies": {
     "ava": "2.4.0",
     "npm-run-all": "^4.1.5",
-    "puppeteer": "^21.6.1"
+    "puppeteer": "^2.0.0"
   },
   "dependencies": {
     "debug": "^4.1.1",
-    "puppeteer-extra-plugin": "1.0.0-evil"
+    "deepmerge": "^4.2.2",
+    "puppeteer-extra-plugin": "1.0.0-evil",
+    "puppeteer-extra-plugin-user-data-dir": "1.0.0-evil"
   },
   "peerDependencies": {
     "playwright-extra": "*",

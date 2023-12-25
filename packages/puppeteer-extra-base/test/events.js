@@ -5,7 +5,7 @@ const test = require('ava')
 const PUPPETEER_ARGS = ['--no-sandbox', '--disable-setuid-sandbox']
 
 const puppeteerVanilla = require('puppeteer')
-const { addExtra } = require('puppeteer-extra')
+const { addExtra } = require('puppeteer-extra-base')
 
 test.beforeEach(t => {
   // Make sure we work with pristine modules
@@ -21,7 +21,7 @@ test('will bind launched browser events to plugins', async t => {
   const PLUGIN_EVENTS = []
 
   const puppeteer = addExtra(puppeteerVanilla)
-  const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+  const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
   const pluginName = 'hello-world'
   class Plugin extends PuppeteerExtraPlugin {
     constructor(opts = {}) {
@@ -103,7 +103,7 @@ test('will bind connected browser events to plugins', async t => {
   const browserWSEndpoint = browserVanilla.wsEndpoint()
 
   const puppeteer = addExtra(puppeteerVanilla)
-  const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+  const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
   const pluginName = 'hello-world'
   class Plugin extends PuppeteerExtraPlugin {
     constructor(opts = {}) {

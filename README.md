@@ -1,8 +1,8 @@
 # puppeteer-extra [![Downloads](https://img.shields.io/endpoint?style=social&url=https://runkit.io/fezvrasta/combined-npm-downloads/1.0.0?packages=puppeteer-extra,puppeteer-extra-plugin,puppeteer-extra-plugin-stealth,puppeteer-extra-plugin-recaptcha,puppeteer-extra-plugin-adblocker)](https://github.com/berstend/puppeteer-extra/)
 
-This is the monorepo for [`puppeteer-extra`](./packages/puppeteer-extra), a modular plugin framework for [`puppeteer`](https://github.com/puppeteer/puppeteer). :-)
+This is the monorepo for [`puppeteer-extra`](./packages/puppeteer-extra-base), a modular plugin framework for [`puppeteer`](https://github.com/puppeteer/puppeteer). :-)
 
-🌟 **For the main documentation, please head over to the [`puppeteer-extra`](./packages/puppeteer-extra) package.**
+🌟 **For the main documentation, please head over to the [`puppeteer-extra`](./packages/puppeteer-extra-base) package.**
 
 We've also recently introduced support for Playwright, if you're interested in that head over to [`playwright-extra`](./packages/playwright-extra).
 
@@ -46,8 +46,8 @@ yarn build
 # Install debug in all packages
 yarn lerna add debug
 
-# Install fs-extra to puppeteer-extra-plugin-user-data-dir
-yarn lerna add fs-extra --scope=puppeteer-extra-plugin-user-data-dir
+# Install fs-extra to puppeteer-extra-base-plugin-user-data-dir
+yarn lerna add fs-extra --scope=puppeteer-extra-base-plugin-user-data-dir
 
 # Remove dependency
 # https://github.com/lerna/lerna/issues/833
@@ -74,16 +74,16 @@ yarn lerna exec "rm -f yarn.lock; rm -rf node_modules; echo 0"
 rm -f yarn.lock &&  rm -rf node_modules && yarn cache clean
 
 # Run tests of specific package
-cd packages/puppeteer-extra-plugin-stealth
+cd packages/puppeteer-extra-base-plugin-stealth
 yarn test
 
 # Run tests of specific stealth evasion
-cd packages/puppeteer-extra-plugin-stealth
+cd packages/puppeteer-extra-base-plugin-stealth
 yarn ava -v ./evasions/user-agent-override/index.test.js
 
 # Test a local monorepo package in an outside folder as it would've been installed from the registry
 # Change PACKAGE_DIR to the path of this monorepo and PACKAGE to the package you wish to install
-PACKAGE=puppeteer-extra PACKAGE_DIR=/Users/foo/puppeteer-extra/packages && yarn remove $(echo $PACKAGE); true && rm -f $(pwd)/$(echo $PACKAGE)-latest.tgz && yarn --cwd $(echo $PACKAGE_DIR)/$(echo $PACKAGE) pack --filename $(pwd)/$(echo $PACKAGE)-latest.tgz && YARN_CACHE_FOLDER=/tmp/yarn yarn add file:$(pwd)/$(echo $PACKAGE)-latest.tgz && rm -rf /tmp/yarn
+PACKAGE=puppeteer-extra-base PACKAGE_DIR=/Users/foo/puppeteer-extra-base/packages && yarn remove $(echo $PACKAGE); true && rm -f $(pwd)/$(echo $PACKAGE)-latest.tgz && yarn --cwd $(echo $PACKAGE_DIR)/$(echo $PACKAGE) pack --filename $(pwd)/$(echo $PACKAGE)-latest.tgz && YARN_CACHE_FOLDER=/tmp/yarn yarn add file:$(pwd)/$(echo $PACKAGE)-latest.tgz && rm -rf /tmp/yarn
 ```
 
 #### Publishing

@@ -7,28 +7,28 @@
 ## Install
 
 ```bash
-yarn add puppeteer-extra-plugin-stealth
+yarn add puppeteer-extra-base-plugin-stealth
 # - or -
-npm install puppeteer-extra-plugin-stealth
+npm install puppeteer-extra-base-plugin-stealth
 ```
 
 If this is your first [puppeteer-extra](https://github.com/berstend/puppeteer-extra) plugin here's everything you need:
 
 ```bash
-yarn add puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
+yarn add puppeteer puppeteer-extra-base puppeteer-extra-base-plugin-stealth
 # - or -
-npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
+npm install puppeteer puppeteer-extra-base puppeteer-extra-base-plugin-stealth
 ```
 
 ## Usage
 
 ```js
-// puppeteer-extra is a drop-in replacement for puppeteer,
+// puppeteer-extra-base is a drop-in replacement for puppeteer,
 // it augments the installed puppeteer with plugin functionality
-const puppeteer = require('puppeteer-extra')
+const puppeteer = require('puppeteer-extra-base')
 
 // add stealth plugin and use defaults (all evasion techniques)
-const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+const StealthPlugin = require('puppeteer-extra-base-plugin-stealth')
 puppeteer.use(StealthPlugin())
 
 // puppeteer usage as normal
@@ -50,8 +50,8 @@ puppeteer.launch({ headless: true }).then(async browser => {
 > so you get perfect type support out of the box. :)
 
 ```ts
-import puppeteer from 'puppeteer-extra'
-import StealthPlugin from 'puppeteer-extra-plugin-stealth'
+import puppeteer from 'puppeteer-extra-base'
+import StealthPlugin from 'puppeteer-extra-base-plugin-stealth'
 
 puppeteer
   .use(StealthPlugin())
@@ -250,9 +250,9 @@ Thanks to [Evan Sangaline](https://intoli.com/blog/not-possible-to-block-chrome-
 Example:
 
 ```javascript
-const puppeteer = require('puppeteer-extra')
+const puppeteer = require('puppeteer-extra-base')
 // Enable stealth plugin with all evasions
-puppeteer.use(require('puppeteer-extra-plugin-stealth')())
+puppeteer.use(require('puppeteer-extra-base-plugin-stealth')())
 ;(async () => {
   // Launch the browser in headless mode and set up a page.
   const browser = await puppeteer.launch({
@@ -289,7 +289,7 @@ Please look into the [evasions directory](./evasions/) for an up to date list.
 Example:
 
 ```javascript
-const pluginStealth = require('puppeteer-extra-plugin-stealth')()
+const pluginStealth = require('puppeteer-extra-base-plugin-stealth')()
 console.log(pluginStealth.availableEvasions) // => Set { 'user-agent', 'console.debug' }
 puppeteer.use(pluginStealth)
 ```
@@ -308,7 +308,7 @@ Example:
 
 ```javascript
 // Remove specific evasion from enabled ones dynamically
-const pluginStealth = require('puppeteer-extra-plugin-stealth')()
+const pluginStealth = require('puppeteer-extra-base-plugin-stealth')()
 pluginStealth.enabledEvasions.delete('console.debug')
 puppeteer.use(pluginStealth)
 ```

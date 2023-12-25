@@ -28,9 +28,9 @@ npm install playwright playwright-extra @extra/proxy-router
 If this is your first [puppeteer-extra] plugin here's everything you need:
 
 ```bash
-yarn add puppeteer puppeteer-extra @extra/proxy-router
+yarn add puppeteer puppeteer-extra-base @extra/proxy-router
 # - or -
-npm install puppeteer puppeteer-extra @extra/proxy-router
+npm install puppeteer puppeteer-extra-base @extra/proxy-router
 ```
 
 </details>
@@ -219,7 +219,7 @@ firefox.use(proxyRouter)
 **Puppeteer:**
 
 ```js
-import puppeteer from 'puppeteer-extra'
+import puppeteer from 'puppeteer-extra-base'
 import ProxyRouter from '@extra/proxy-router'
 // ...
 puppeteer.use(proxyRouter)

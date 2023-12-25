@@ -8,7 +8,7 @@ test.beforeEach(t => {
   // Make sure we work with pristine modules
   try {
     delete require.cache[require.resolve('puppeteer-extra')]
-    // delete require.cache[require.resolve('puppeteer-extra-plugin')]
+    // delete require.cache[require.resolve('puppeteer-extra-base-plugin')]
   } catch (error) {
     console.log(error)
   }
@@ -24,9 +24,9 @@ test('will remove headless from remote browser', async t => {
     })
     const browserWSEndpoint = browserVanilla.wsEndpoint()
 
-    // Use puppeteer-extra with plugin to conntect to existing browser
-    const puppeteer = require('puppeteer-extra')
-    puppeteer.use(require('puppeteer-extra-plugin-anonymize-ua')())
+    // Use puppeteer-extra-base with plugin to conntect to existing browser
+    const puppeteer = require('puppeteer-extra-base')
+    puppeteer.use(require('puppeteer-extra-base-plugin-anonymize-ua')())
     const browser = await puppeteer.connect({ browserWSEndpoint })
 
     // Let's ensure we've anonymized the user-agent, despite not using .launch

@@ -1,6 +1,6 @@
 'use strict'
 
-const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
 
 /**
  * Fixes the UserAgent info (composed of UA string, Accept-Language, Platform, and UA hints).
@@ -19,16 +19,16 @@ const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
  * as it will reset the language and platform values you set with this plugin.
  *
  * @example
- * const puppeteer = require("puppeteer-extra")
+ * const puppeteer = require("puppeteer-extra-base")
  *
- * const StealthPlugin = require("puppeteer-extra-plugin-stealth")
+ * const StealthPlugin = require("puppeteer-extra-base-plugin-stealth")
  * const stealth = StealthPlugin()
  * // Remove this specific stealth plugin from the default set
  * stealth.enabledEvasions.delete("user-agent-override")
  * puppeteer.use(stealth)
  *
- * // Stealth plugins are just regular `puppeteer-extra` plugins and can be added as such
- * const UserAgentOverride = require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")
+ * // Stealth plugins are just regular `puppeteer-extra-base` plugins and can be added as such
+ * const UserAgentOverride = require("puppeteer-extra-base-plugin-stealth/evasions/user-agent-override")
  * // Define custom UA and locale
  * const ua = UserAgentOverride({ userAgent: "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)", locale: "de-DE,de" })
  * puppeteer.use(ua)

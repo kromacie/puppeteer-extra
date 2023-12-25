@@ -7,7 +7,7 @@ import { ProxyRouterStats } from './stats'
 
 import Debug from 'debug'
 
-const debug = Debug('puppeteer-extra:proxy-router')
+const debug = Debug('puppeteer-extra-base:proxy-router')
 const debugVerbose = debug.extend('verbose')
 const warn = console.warn.bind(console, `\n[proxy-router] %s`) // Preserves line numbers
 

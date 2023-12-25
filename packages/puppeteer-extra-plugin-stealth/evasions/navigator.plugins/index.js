@@ -1,6 +1,6 @@
 'use strict'
 
-const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
 
 const utils = require('../_utils')
 const withUtils = require('../_utils/withUtils')

@@ -2,7 +2,7 @@
 import { PuppeteerNode, Browser, Page } from 'puppeteer'
 
 import Debug from 'debug'
-const debug = Debug('puppeteer-extra')
+const debug = Debug('puppeteer-extra-base')
 
 import merge from 'deepmerge'
 
@@ -49,9 +49,9 @@ interface BrowserInternals extends Browser {
  * @implements {VanillaPuppeteer}
  *
  * @example
- * const puppeteer = require('puppeteer-extra')
- * puppeteer.use(require('puppeteer-extra-plugin-anonymize-ua')())
- * puppeteer.use(require('puppeteer-extra-plugin-font-size')({defaultFontSize: 18}))
+ * const puppeteer = require('puppeteer-extra-base')
+ * puppeteer.use(require('puppeteer-extra-base-plugin-anonymize-ua')())
+ * puppeteer.use(require('puppeteer-extra-base-plugin-font-size')({defaultFontSize: 18}))
  *
  * ;(async () => {
  *   const browser = await puppeteer.launch({headless: false})
@@ -69,7 +69,7 @@ export class PuppeteerExtra implements VanillaPuppeteer {
   ) {}
 
   /**
-   * The **main interface** to register `puppeteer-extra` plugins.
+   * The **main interface** to register `puppeteer-extra-base` plugins.
    *
    * @example
    * puppeteer.use(plugin1).use(plugin2)
@@ -244,7 +244,7 @@ export class PuppeteerExtra implements VanillaPuppeteer {
    * right after a page has been created reliably fixes this issue and adds
    * no noticable delay or side-effects.
    *
-   * This problem is not specific to `puppeteer-extra` but default Puppeteer behaviour.
+   * This problem is not specific to `puppeteer-extra-base` but default Puppeteer behaviour.
    *
    * Note: This patch only fixes explicitly created pages, implicitly created ones
    * (e.g. through `window.open`) are still subject to this issue. I didn't find a
@@ -325,7 +325,7 @@ export class PuppeteerExtra implements VanillaPuppeteer {
   /**
    * Lightweight plugin dependency management to require plugins and code mods on demand.
    *
-   * This uses the `dependencies` stanza (a `Set`) exposed by `puppeteer-extra` plugins.
+   * This uses the `dependencies` stanza (a `Set`) exposed by `puppeteer-extra-base` plugins.
    *
    * @todo Allow objects as depdencies that contains opts for the requested plugin.
    *
@@ -352,17 +352,17 @@ export class PuppeteerExtra implements VanillaPuppeteer {
         continue
       }
       // We follow a plugin naming convention, but let's rather enforce it <3
-      name = name.startsWith('puppeteer-extra-plugin')
+      name = name.startsWith('puppeteer-extra-base-plugin')
         ? name
         : `puppeteer-extra-plugin-${name}`
       // In case a module sub resource is requested print out the main package name
-      // e.g. puppeteer-extra-plugin-stealth/evasions/console.debug => puppeteer-extra-plugin-stealth
+      // e.g. puppeteer-extra-base-plugin-stealth/evasions/console.debug => puppeteer-extra-base-plugin-stealth
       const packageName = name.split('/')[0]
       let dep = null
       try {
         // Try to require and instantiate the stated dependency
         dep = require(name)()
-        // Register it with `puppeteer-extra` as plugin
+        // Register it with `puppeteer-extra-base` as plugin
         this.use(dep)
       } catch (err) {
         console.warn(`
@@ -482,10 +482,10 @@ export class PuppeteerExtra implements VanillaPuppeteer {
  *
  * @example
  * // javascript import
- * const puppeteer = require('puppeteer-extra')
+ * const puppeteer = require('puppeteer-extra-base')
  *
  * // typescript/es6 module import
- * import puppeteer from 'puppeteer-extra'
+ * import puppeteer from 'puppeteer-extra-base'
  *
  * // Add plugins
  * puppeteer.use(...)
@@ -497,16 +497,16 @@ const defaultExport: PuppeteerExtra = (() => {
 export default defaultExport
 
 /**
- * An **alternative way** to use `puppeteer-extra`: Augments the provided puppeteer with extra plugin functionality.
+ * An **alternative way** to use `puppeteer-extra-base`: Augments the provided puppeteer with extra plugin functionality.
  *
  * This is useful in case you need multiple puppeteer instances with different plugins or to add plugins to a non-standard puppeteer package.
  *
  * @example
  * // js import
- * const { addExtra } = require('puppeteer-extra')
+ * const { addExtra } = require('puppeteer-extra-base')
  *
  * // ts/es6 import
- * import { addExtra } from 'puppeteer-extra'
+ * import { addExtra } from 'puppeteer-extra-base'
  *
  * // Patch e.g. puppeteer-firefox and add plugins
  * const puppeteer = addExtra(require('puppeteer-firefox'))

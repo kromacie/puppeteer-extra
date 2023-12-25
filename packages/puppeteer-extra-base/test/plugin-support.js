@@ -16,7 +16,7 @@ test.beforeEach(t => {
 })
 
 test('will launch the browser normally', async t => {
-  const puppeteer = require('puppeteer-extra')
+  const puppeteer = require('puppeteer-extra-base')
   const browser = await puppeteer.launch({ args: PUPPETEER_ARGS })
   const page = await browser.newPage()
   await page.goto('http://example.com', {
@@ -28,8 +28,8 @@ test('will launch the browser normally', async t => {
 })
 
 test('will launch puppeteer with plugin support', async t => {
-  const puppeteer = require('puppeteer-extra')
-  const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+  const puppeteer = require('puppeteer-extra-base')
+  const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
   const pluginName = 'hello-world'
   const pluginData = [{ name: 'foo', value: 'bar' }]
   class Plugin extends PuppeteerExtraPlugin {

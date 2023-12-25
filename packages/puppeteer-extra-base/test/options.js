@@ -17,8 +17,8 @@ beforeEach(t => {
 test('will modify puppeteer launch options through plugins', async t => {
   let FINAL_OPTIONS = null
 
-  const puppeteer = require('puppeteer-extra')
-  const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+  const puppeteer = require('puppeteer-extra-base')
+  const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
   const pluginName = 'hello-world'
   const pluginData = [{ name: 'foo', value: 'bar' }]
   class Plugin extends PuppeteerExtraPlugin {
@@ -67,8 +67,8 @@ test('will modify puppeteer connect options through plugins', async t => {
   })
   const browserWSEndpoint = browserVanilla.wsEndpoint()
 
-  const puppeteer = require('puppeteer-extra')
-  const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+  const puppeteer = require('puppeteer-extra-base')
+  const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
   const pluginName = 'hello-world'
   const pluginData = [{ name: 'foo', value: 'bar' }]
   class Plugin extends PuppeteerExtraPlugin {

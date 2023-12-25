@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-yarn add puppeteer-extra-plugin
+yarn add puppeteer-extra-base-plugin
 ```
 
 ## Changelog
@@ -16,10 +16,10 @@ yarn add puppeteer-extra-plugin
 
 ```js
 // Before
-const PuppeteerExtraPlugin = require('puppeteer-extra-plugin')
+const PuppeteerExtraPlugin = require('puppeteer-extra-base-plugin')
 
 // After (>= v3.0.1)
-const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
 ```
 
 </details>
@@ -74,7 +74,7 @@ Example:
 
 ```javascript
 // hello-world-plugin.js
-const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
 
 class Plugin extends PuppeteerExtraPlugin {
   constructor(opts = {}) {
@@ -97,7 +97,7 @@ module.exports = function(pluginConfig) {
 }
 
 // foo.js
-const puppeteer = require('puppeteer-extra')
+const puppeteer = require('puppeteer-extra-base')
 puppeteer.use(require('./hello-world-plugin')())
 ;(async () => {
   const browser = await puppeteer.launch({ headless: false })
@@ -150,7 +150,7 @@ get defaults () {
 }
 
 // Users can overwrite plugin defaults during instantiation:
-puppeteer.use(require('puppeteer-extra-plugin-foobar')({ makeWindows: false }))
+puppeteer.use(require('puppeteer-extra-base-plugin-foobar')({ makeWindows: false }))
 ```
 
 - **See: \[[opts]]**
@@ -204,7 +204,7 @@ Example:
 get dependencies () {
   return new Set(['user-preferences'])
 }
-// Will ensure the 'puppeteer-extra-plugin-user-preferences' plugin is loaded.
+// Will ensure the 'puppeteer-extra-base-plugin-user-preferences' plugin is loaded.
 ```
 
 ---
@@ -283,16 +283,16 @@ Will automatically namespace the logging output to the plugin package name.
 
 ```bash
 # toggle output using environment variables
-DEBUG=puppeteer-extra-plugin:<plugin_name> node foo.js
+DEBUG=puppeteer-extra-base-plugin:<plugin_name> node foo.js
 # to debug all the things:
-DEBUG=puppeteer-extra,puppeteer-extra-plugin:* node foo.js
+DEBUG=puppeteer-extra-base,puppeteer-extra-base-plugin:* node foo.js
 ```
 
 Example:
 
 ```javascript
 this.debug('hello world')
-// will output e.g. 'puppeteer-extra-plugin:anonymize-ua hello world'
+// will output e.g. 'puppeteer-extra-base-plugin:anonymize-ua hello world'
 ```
 
 ---

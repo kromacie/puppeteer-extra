@@ -1,6 +1,6 @@
 'use strict'
 
-const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
 
 const withUtils = require('../_utils/withUtils')
 
@@ -10,16 +10,16 @@ const withUtils = require('../_utils/withUtils')
  * This plugin makes it possible to change this property.
  *
  * @example
- * const puppeteer = require("puppeteer-extra")
+ * const puppeteer = require("puppeteer-extra-base")
  *
- * const StealthPlugin = require("puppeteer-extra-plugin-stealth")
+ * const StealthPlugin = require("puppeteer-extra-base-plugin-stealth")
  * const stealth = StealthPlugin()
  * // Remove this specific stealth plugin from the default set
  * stealth.enabledEvasions.delete("navigator.vendor")
  * puppeteer.use(stealth)
  *
- * // Stealth plugins are just regular `puppeteer-extra` plugins and can be added as such
- * const NavigatorVendorPlugin = require("puppeteer-extra-plugin-stealth/evasions/navigator.vendor")
+ * // Stealth plugins are just regular `puppeteer-extra-base` plugins and can be added as such
+ * const NavigatorVendorPlugin = require("puppeteer-extra-base-plugin-stealth/evasions/navigator.vendor")
  * const nvp = NavigatorVendorPlugin({ vendor: 'Apple Computer, Inc.' }) // Custom vendor
  * puppeteer.use(nvp)
  *

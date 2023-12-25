@@ -59,8 +59,8 @@ script:
 
   # For debugging
   - yarn list puppeteer
-  - yarn list puppeteer-extra
-  - file node_modules/puppeteer-extra/dist/index.cjs.js
+  - yarn list puppeteer-extra-base
+  - file node_modules/puppeteer-extra-base/dist/index.cjs.js
 
   # Run tests
   - yarn test-ci

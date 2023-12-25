@@ -5,7 +5,7 @@
 ### Install
 
 ```bash
-yarn add puppeteer-extra-plugin-click-and-wait
+yarn add puppeteer-extra-base-plugin-click-and-wait
 ```
 
 ## API

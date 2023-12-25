@@ -36,7 +36,7 @@ labels: 'issue: bug report, needs triage'
 -->
 
 ```javascript
-const puppeteer = require('puppeteer-extra')
+const puppeteer = require('puppeteer-extra-base')
 
 ;(async () => {
   const browser = await puppeteer.launch()

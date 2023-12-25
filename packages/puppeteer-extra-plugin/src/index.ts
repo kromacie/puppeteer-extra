@@ -22,7 +22,7 @@ export type PluginRequirements = Set<
 >
 
 /**
- * Base class for `puppeteer-extra` plugins.
+ * Base class for `puppeteer-extra-base` plugins.
  *
  * Provides convenience methods to avoid boilerplate.
  *
@@ -33,7 +33,7 @@ export type PluginRequirements = Set<
  *
  * @example
  * // hello-world-plugin.js
- * const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
+ * const { PuppeteerExtraPlugin } = require('puppeteer-extra-base-plugin')
  *
  * class Plugin extends PuppeteerExtraPlugin {
  *   constructor (opts = { }) { super(opts) }
@@ -51,7 +51,7 @@ export type PluginRequirements = Set<
  *
  *
  * // foo.js
- * const puppeteer = require('puppeteer-extra')
+ * const puppeteer = require('puppeteer-extra-base')
  * puppeteer.use(require('./hello-world-plugin')())
  *
  * ;(async () => {
@@ -83,7 +83,7 @@ export abstract class PuppeteerExtraPlugin {
    * Plugin name (required).
    *
    * Convention:
-   * - Package: `puppeteer-extra-plugin-anonymize-ua`
+   * - Package: `puppeteer-extra-base-plugin-anonymize-ua`
    * - Name: `anonymize-ua`
    *
    * @example
@@ -112,7 +112,7 @@ export abstract class PuppeteerExtraPlugin {
    * }
    *
    * // Users can overwrite plugin defaults during instantiation:
-   * puppeteer.use(require('puppeteer-extra-plugin-foobar')({ makeWindows: false }))
+   * puppeteer.use(require('puppeteer-extra-base-plugin-foobar')({ makeWindows: false }))
    */
   get defaults(): PluginOptions {
     return {}
@@ -149,13 +149,13 @@ export abstract class PuppeteerExtraPlugin {
   /**
    * Plugin dependencies (optional).
    *
-   * Missing plugins will be required() by puppeteer-extra.
+   * Missing plugins will be required() by puppeteer-extra-base.
    *
    * @example
    * get dependencies () {
    *   return new Set(['user-preferences'])
    * }
-   * // Will ensure the 'puppeteer-extra-plugin-user-preferences' plugin is loaded.
+   * // Will ensure the 'puppeteer-extra-base-plugin-user-preferences' plugin is loaded.
    */
   get dependencies(): PluginDependencies {
     return new Set([])
@@ -223,14 +223,14 @@ export abstract class PuppeteerExtraPlugin {
    *
    *  ```bash
    *  # toggle output using environment variables
-   *  DEBUG=puppeteer-extra-plugin:<plugin_name> node foo.js
+   *  DEBUG=puppeteer-extra-base-plugin:<plugin_name> node foo.js
    *  # to debug all the things:
-   *  DEBUG=puppeteer-extra,puppeteer-extra-plugin:* node foo.js
+   *  DEBUG=puppeteer-extra-base,puppeteer-extra-base-plugin:* node foo.js
    *  ```
    *
    * @example
    * this.debug('hello world')
-   * // will output e.g. 'puppeteer-extra-plugin:anonymize-ua hello world'
+   * // will output e.g. 'puppeteer-extra-base-plugin:anonymize-ua hello world'
    */
   get debug(): Debugger {
     return debug(`puppeteer-extra-plugin:${this.name}`)
@@ -270,7 +270,7 @@ export abstract class PuppeteerExtraPlugin {
    * Alternatively you could expose a class method that takes a browser instance as a parameter to work with:
    *
    * ```es6
-   * const fancyPlugin = require('puppeteer-extra-plugin-fancy')()
+   * const fancyPlugin = require('puppeteer-extra-base-plugin-fancy')()
    * puppeteer.use(fancyPlugin)
    * const browser = await puppeteer.launch()
    * await fancyPlugin.killBrowser(browser)
@@ -426,7 +426,7 @@ export abstract class PuppeteerExtraPlugin {
   }
 
   /**
-   * After the plugin has been registered in `puppeteer-extra`.
+   * After the plugin has been registered in `puppeteer-extra-base`.
    *
    * Normally right after `puppeteer.use(plugin)` is called
    */
@@ -451,7 +451,7 @@ export abstract class PuppeteerExtraPlugin {
 
   /**
    * Will match plugin dependencies against all currently registered plugins.
-   * Is being called by `puppeteer-extra` and used to require missing dependencies.
+   * Is being called by `puppeteer-extra-base` and used to require missing dependencies.
    *
    * @param  {Array<Object>} plugins
    * @return {Set} - list of missing plugin names

@@ -1,4 +1,4 @@
-import { PuppeteerExtraPlugin } from 'puppeteer-extra-plugin'
+import { PuppeteerExtraPlugin } from 'puppeteer-extra-base-plugin'
 import { ProxyRouter, ProxyRouterOpts } from './router'
 
 export type ExtraPluginProxyRouterOptions = ProxyRouterOpts & {

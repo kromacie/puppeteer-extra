@@ -6,7 +6,7 @@
 import {} from 'puppeteer'
 import { Browser, ConnectOptions, ChromeArgOptions, LaunchOptions, FetcherOptions, BrowserFetcher} from "puppeteer"
 
-// Make puppeteer-extra typings backwards compatible with puppeteer < v6
+// Make puppeteer-extra-base typings backwards compatible with puppeteer < v6
 // In pptr >= v6 they switched to built-in types and the `@types/puppeteer` package is not needed anymore.
 // This is essentially a shim for `PuppeteerNode`, which is found in pptr >= v6 and missing in `@types/puppeteer`.
 // Requires the `@types/puppeteer` package to be installed when using pptr < v6, `@types/puppeteer` will be ignored by TS when built-in types are available.

@@ -2,8 +2,8 @@ const path = require('path')
 const scriptName = path.basename(__filename)
 const screenshotPath = path.join(__dirname, '_results', `${scriptName}.png`)
 
-const puppeteer = require('puppeteer-extra')
-const pluginStealth = require('puppeteer-extra-plugin-stealth')
+const puppeteer = require('puppeteer-extra-base')
+const pluginStealth = require('puppeteer-extra-base-plugin-stealth')
 
 async function main() {
   puppeteer.use(pluginStealth())
